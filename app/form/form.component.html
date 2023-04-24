@@ -1,0 +1,29 @@
+<p>form works!</p>
+<div class="container">
+    <form [formGroup]="profileform">
+
+        <label for="">firstname</label>
+        <input type="text" class="form-control" formControlName="firstname">
+        <label for="">lastname</label>
+        <input type="text" class="form-control" formControlName="lastname">
+        <ng-container formGroupName="address">
+            <label for="">state</label>
+            <input type="text" class="form-control" formControlName="state">
+            <label for="">city</label>
+            <input type="text" class="form-control" formControlName="city">
+            <label for="">pin</label>
+            <input type="number" class="form-control" formControlName="pin">
+            
+        </ng-container>
+        <ng-container formArrayName="relation" *ngFor="let item of rel.controls;let i=index">
+            <ng-container formGroupName="{{i}}">
+            <label for="">relation</label>
+            <input type="text" class="form-control" formControlName="relation">
+            <label for="">relation2</label>
+            <input type="text" class="form-control" formControlName="relation2">
+        </ng-container>
+    </ng-container>
+    <button class="btn btn-success" (click)="addfield()">add field</button>
+        {{profileform.value|json}}
+    </form>
+</div>
